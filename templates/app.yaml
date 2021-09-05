@@ -1,18 +1,18 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: app1
+  name: app
   labels:
-    app: app1
+    app: app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: app1
+      app: app
   template:
     metadata:
       labels:
-        app: app1
+        app: app
     spec:
       containers:
       - image: nginx
@@ -24,10 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-app1
+  name: nginx
 spec:
   selector:
-    app: app1
+    app: app
   ports:
   - protocol: "TCP"
     port: 80
